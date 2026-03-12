@@ -38,20 +38,18 @@ export function FooterSection() {
       <Container className="relative z-10">
         <div className="section-frame rounded-[36px] px-6 py-10 md:px-8 md:py-12">
           <div className="glow-divider" />
-          <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true, amount: 0.4 }}
               whileInView={{ opacity: 1, y: 0 }}
             >
-              <p className="font-display text-2xl uppercase tracking-[0.28em] text-white">
+              <p className="font-display text-2xl uppercase tracking-[0.24em] text-white">
                 {siteConfig.name}
               </p>
-              <p className="mt-5 max-w-xl text-base leading-8 text-muted">
-                A digital universe stack for living VR worlds, multiplayer societies,
-                holographic interfaces, and future expansion into launchers, portals, and
-                player dashboards.
+              <p className="mt-5 max-w-xl text-base leading-7 text-muted">
+                Persistent worlds for players who want more than a game.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Button asChild>
@@ -63,13 +61,13 @@ export function FooterSection() {
               </div>
             </motion.div>
             <motion.div
-              className="grid gap-8 sm:grid-cols-2"
+              className="grid gap-4 sm:grid-cols-2"
               initial={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true, amount: 0.4 }}
               whileInView={{ opacity: 1, y: 0 }}
             >
-              <div>
+              <div className="neon-card section-frame rounded-[28px] p-5">
                 <p className="font-display text-sm uppercase tracking-[0.22em] text-primary">
                   Navigation
                 </p>
@@ -77,7 +75,7 @@ export function FooterSection() {
                   {siteConfig.footerNav.map((item) => (
                     <li key={item.label}>
                       <Link
-                        className="text-sm uppercase tracking-[0.16em] text-white/78 transition hover:text-white"
+                        className="text-sm uppercase tracking-[0.16em] text-white/80 transition hover:text-white"
                         href={item.href}
                       >
                         {item.label}
@@ -86,7 +84,7 @@ export function FooterSection() {
                   ))}
                 </ul>
               </div>
-              <div>
+              <div className="neon-card section-frame rounded-[28px] p-5">
                 <p className="font-display text-sm uppercase tracking-[0.22em] text-primary">
                   Digital Universe
                 </p>
@@ -98,7 +96,7 @@ export function FooterSection() {
                       <Link
                         key={link.label}
                         aria-label={link.label}
-                        className="group flex size-11 items-center justify-center rounded-full border border-white/10 bg-black/24 text-white/75 transition hover:border-[color:rgba(78,207,255,0.28)] hover:text-primary"
+                        className="icon-shell group flex size-11 items-center justify-center rounded-full text-white/75 transition hover:border-[color:rgba(78,207,255,0.28)] hover:text-primary"
                         href={link.href}
                         rel={link.href.startsWith("http") ? "noreferrer" : undefined}
                         target={link.href.startsWith("http") ? "_blank" : undefined}

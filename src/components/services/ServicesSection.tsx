@@ -39,7 +39,7 @@ export function ServicesSection() {
       <Container className="relative z-10">
         <SectionHeading
           align="center"
-          description="Our stack fuses simulation systems, hyperscale networking, AI orchestration, and economy tooling into one modular platform for persistent VR universes."
+          description="Engine, network, AI, and economy systems built as one modular universe stack."
           eyebrow="Services"
           title="Game Technology"
         />
@@ -57,13 +57,20 @@ export function ServicesSection() {
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 viewport={{ once: true, amount: 0.25 }}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -12 }}
                 whileInView={{ opacity: 1, y: 0 }}
               >
-                <Card className="neon-card h-full rounded-[30px]">
-                  <CardHeader>
+                <Card className="neon-card group h-full rounded-[32px]">
+                  <div className="card-grid absolute inset-0 opacity-30" />
+                  <CardHeader className="relative gap-5">
                     <div className="flex items-center justify-between gap-4">
-                      <div className="flex size-14 items-center justify-center rounded-[22px] border border-white/10 bg-white/5 text-primary">
+                      <span className="card-index">0{index + 1}</span>
+                      <span className="metric-chip rounded-full px-3 py-2 text-[10px] uppercase tracking-[0.24em] text-white/70">
+                        {service.tag}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <div className="icon-shell flex size-14 items-center justify-center rounded-[22px] text-primary">
                         <motion.div
                           animate={{ rotate: [0, 6, -6, 0], scale: [1, 1.04, 1] }}
                           transition={{
@@ -75,14 +82,16 @@ export function ServicesSection() {
                           <Icon className="size-6" />
                         </motion.div>
                       </div>
-                      <span className="rounded-full border border-white/10 bg-black/18 px-3 py-2 text-[10px] uppercase tracking-[0.28em] text-white/70">
-                        {service.tag}
-                      </span>
+                      <div className="space-y-4">
+                        <CardTitle className="max-w-[14ch] leading-snug">
+                          {service.title}
+                        </CardTitle>
+                        <div className="h-px w-16 bg-gradient-to-r from-[rgba(78,207,255,0.8)] to-transparent" />
+                      </div>
                     </div>
-                    <CardTitle>{service.title}</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-sm leading-7">
+                  <CardContent className="relative pt-0">
+                    <CardDescription className="max-w-xs">
                       {service.description}
                     </CardDescription>
                   </CardContent>

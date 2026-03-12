@@ -9,7 +9,7 @@ export function Eyebrow({ className, children, ...props }: TypographyProps) {
   return (
     <p
       className={cn(
-        "font-display text-xs uppercase tracking-[0.38em] text-primary",
+        "font-display text-[11px] uppercase tracking-[0.34em] text-primary",
         className,
       )}
       {...props}
@@ -27,7 +27,7 @@ export function DisplayTitle({
   return (
     <h1
       className={cn(
-        "font-display text-4xl leading-[0.95] tracking-[0.1em] text-glow sm:text-5xl lg:text-7xl",
+        "font-display text-4xl leading-[0.94] tracking-[0.08em] text-glow sm:text-5xl lg:text-7xl",
         className,
       )}
       {...props}
@@ -45,7 +45,7 @@ export function SectionTitle({
   return (
     <h2
       className={cn(
-        "font-display text-3xl uppercase tracking-[0.18em] text-white sm:text-4xl lg:text-5xl",
+        "font-display text-3xl uppercase tracking-[0.14em] text-white sm:text-4xl lg:text-[3.2rem]",
         className,
       )}
       {...props}
@@ -58,7 +58,10 @@ export function SectionTitle({
 export function SectionLead({ className, children, ...props }: TypographyProps) {
   return (
     <p
-      className={cn("max-w-2xl text-base leading-8 text-muted md:text-lg", className)}
+      className={cn(
+        "max-w-[40rem] text-[15px] leading-7 text-muted md:text-base md:leading-8",
+        className,
+      )}
       {...props}
     >
       {children}

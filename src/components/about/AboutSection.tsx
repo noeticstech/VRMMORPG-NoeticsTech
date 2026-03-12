@@ -26,13 +26,12 @@ export function AboutSection() {
               imageClassName="object-cover object-center"
               src={siteConfig.images.about}
             >
-              <div className="absolute inset-x-6 bottom-6 rounded-[24px] border border-white/10 bg-black/28 p-5 backdrop-blur-xl">
-                <p className="font-display text-sm uppercase tracking-[0.18em] text-primary">
-                  World Simulation Directive
+              <div className="card-surface absolute inset-x-6 bottom-6 rounded-[24px] p-5">
+                <p className="font-display text-sm uppercase tracking-[0.16em] text-primary">
+                  World Simulation Core
                 </p>
-                <p className="mt-3 max-w-md text-sm leading-7 text-white/80">
-                  Persistent world-state orchestration, adaptive AI response, and socially
-                  meaningful progression architecture.
+                <p className="mt-3 max-w-md text-sm leading-6 text-white/80">
+                  Persistent state. Adaptive AI. Live economies.
                 </p>
               </div>
             </MediaPanel>
@@ -45,18 +44,23 @@ export function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
           >
             <SectionHeading
-              description="NoeticsTech is building a persistent VR world platform where society, conflict, trade, and discovery evolve in real time across an always-on universe."
+              description="A persistent VR world where society, trade, conflict, and discovery evolve in real time."
               eyebrow="The Vision"
               title="A New Kind of Reality"
             />
-            <div className="grid gap-3">
-              {aboutCapabilities.map((item) => (
+            <div className="grid gap-4 sm:grid-cols-2">
+              {aboutCapabilities.map((item, index) => (
                 <div
                   key={item}
-                  className="flex items-start gap-3 rounded-[20px] border border-white/10 bg-white/5 px-4 py-4"
+                  className="neon-card section-frame rounded-[22px] px-4 py-4"
                 >
-                  <CheckCircle2 className="mt-1 size-4 shrink-0 text-primary" />
-                  <p className="text-sm leading-7 text-white/80">{item}</p>
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="card-index">0{index + 1}</span>
+                    <CheckCircle2 className="size-4 text-primary" />
+                  </div>
+                  <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
+                    {item}
+                  </p>
                 </div>
               ))}
             </div>
@@ -74,13 +78,17 @@ export function AboutSection() {
                   viewport={{ once: true, amount: 0.3 }}
                   whileInView={{ opacity: 1, y: 0 }}
                 >
-                  <p className="font-display text-3xl uppercase tracking-[0.2em] text-primary">
+                  <div className="mb-5 flex items-center justify-between">
+                    <span className="card-index">Metric 0{index + 1}</span>
+                    <div className="h-px w-14 bg-gradient-to-r from-[rgba(78,207,255,0.8)] to-transparent" />
+                  </div>
+                  <p className="font-display text-4xl uppercase tracking-[0.18em] text-primary">
                     <AnimatedCounter suffix={stat.suffix} value={stat.value} />
                   </p>
-                  <p className="mt-4 font-display text-sm uppercase tracking-[0.18em] text-white">
+                  <p className="mt-4 font-display text-sm uppercase tracking-[0.16em] text-white">
                     {stat.label}
                   </p>
-                  <p className="mt-3 text-sm leading-7 text-muted">{stat.description}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted">{stat.description}</p>
                 </motion.article>
               ))}
             </div>

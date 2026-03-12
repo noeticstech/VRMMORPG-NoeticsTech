@@ -19,15 +19,15 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "space-y-5",
-        align === "center" && "mx-auto max-w-3xl text-center",
+        "space-y-4",
+        align === "center" && "mx-auto max-w-2xl text-center",
         className,
       )}
     >
       <Eyebrow>{eyebrow}</Eyebrow>
       <SectionTitle>{title}</SectionTitle>
       <SectionLead>{description}</SectionLead>
-      <div className={cn("glow-divider max-w-52", align === "center" && "mx-auto")} />
+      <div className={cn("glow-divider max-w-40", align === "center" && "mx-auto")} />
     </div>
   );
 }

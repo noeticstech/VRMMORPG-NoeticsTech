@@ -2,25 +2,25 @@ export const heroSignals = [
   {
     title: "Persistent Worlds",
     value: "24/7",
-    detail: "Always-live universe states with synchronized realm persistence.",
+    detail: "Always-on realms with synced state.",
   },
   {
     title: "Neural NPC Mesh",
     value: "AI",
-    detail: "Dynamic factions, adaptive encounters, and responsive story arcs.",
+    detail: "Factions react to players in real time.",
   },
   {
     title: "Trade Networks",
     value: "MMO",
-    detail: "Player-driven economies spanning regions, guilds, and territories.",
+    detail: "Trade routes drive the living economy.",
   },
 ] as const;
 
 export const aboutCapabilities = [
-  "Evolving virtual societies that remember player choices",
-  "Real player economies with governed scarcity and exchange",
-  "Dynamic AI characters that shape quests, politics, and conflict",
-  "Global multiplayer universe built for persistent presence",
+  "Persistent societies",
+  "Player-run economies",
+  "Adaptive AI factions",
+  "Shared global world",
 ] as const;
 
 export const aboutStats = [
@@ -28,54 +28,50 @@ export const aboutStats = [
     value: 12,
     suffix: "M+",
     label: "Millions of Players",
-    description: "Mass-scale concurrency planned for global faction growth.",
+    description: "Scale for realm-wide population.",
   },
   {
     value: 24,
     suffix: "/7",
     label: "Persistent Worlds",
-    description: "Regional shards stay alive with uninterrupted simulation loops.",
+    description: "Simulation never sleeps.",
   },
   {
     value: 300,
     suffix: "+",
     label: "AI-Driven Ecosystems",
-    description: "Autonomous agents react to climate, trade, and social pressure.",
+    description: "Autonomous agents and systems.",
   },
   {
     value: 6,
     suffix: "th Gen",
     label: "Next-Gen VR Technology",
-    description: "Latency-aware rendering, presence systems, and haptic hooks.",
+    description: "Low-latency presence tech.",
   },
 ] as const;
 
 export const services = [
   {
     title: "VR Game Engine Systems",
-    description:
-      "Runtime architecture, interaction loops, and simulation layers tailored for embodied play.",
+    description: "Simulation, interaction, and world logic for embodied play.",
     icon: "cpu",
     tag: "Engine Layer",
   },
   {
     title: "Massive Multiplayer Infrastructure",
-    description:
-      "Elastic services, shard orchestration, and low-latency network routing for persistent realms.",
+    description: "Shard orchestration and low-latency networking.",
     icon: "network",
     tag: "Scale Mesh",
   },
   {
     title: "AI NPC Ecosystems",
-    description:
-      "Behavior graphs, memory systems, and faction logic that turn scripted spaces into living societies.",
+    description: "Memory, behavior, and faction intelligence.",
     icon: "brain",
     tag: "Autonomy Core",
   },
   {
     title: "Virtual Economy Platforms",
-    description:
-      "Secure trade layers, resource balancing, and player-governed markets designed for longevity.",
+    description: "Trade, scarcity, and governed exchange.",
     icon: "coins",
     tag: "Economy Stack",
   },
@@ -84,37 +80,37 @@ export const services = [
 export const projectModules = [
   {
     title: "Territory Wars",
-    description: "Asymmetric battlegrounds that reshape borders and supply chains.",
+    description: "Guild conflict at world scale.",
     icon: "swords",
     position: "left-[4%] top-[8%]",
   },
   {
     title: "Player Cities",
-    description: "Guild-led hubs with zoning, commerce, and civic progression.",
+    description: "Player-run hubs and districts.",
     icon: "building",
     position: "left-[32%] top-[2%]",
   },
   {
     title: "Economic Systems",
-    description: "Reactive pricing, material sinks, and cross-region logistics.",
+    description: "Reactive markets and logistics.",
     icon: "coins",
     position: "right-[30%] top-[6%]",
   },
   {
     title: "Training Cities",
-    description: "Skill arenas, onboarding districts, and faction academies.",
+    description: "Onboarding and mastery zones.",
     icon: "graduation",
     position: "right-[6%] top-[18%]",
   },
   {
     title: "Trading Network",
-    description: "Linked ports, caravans, auction houses, and rare-item circulation.",
+    description: "Ports, routes, and auctions.",
     icon: "network",
     position: "left-[18%] bottom-[10%]",
   },
   {
     title: "Political Systems",
-    description: "Council votes, laws, reputations, and alliance management.",
+    description: "Votes, laws, and alliances.",
     icon: "shield",
     position: "right-[10%] bottom-[8%]",
   },
@@ -123,32 +119,32 @@ export const projectModules = [
 export const teamRoles = [
   {
     title: "Developers",
-    description: "Gameplay systems, tooling, and live world infrastructure.",
+    description: "Core systems and live ops.",
     icon: "code",
   },
   {
     title: "Designers",
-    description: "Interaction loops, faction progression, and encounter architecture.",
+    description: "Loops, balance, and progression.",
     icon: "pen",
   },
   {
     title: "Engineers",
-    description: "Rendering, networking, cloud systems, and performance pipelines.",
+    description: "Rendering, network, and cloud.",
     icon: "cog",
   },
   {
     title: "Artists",
-    description: "Worlds, interfaces, shaders, and cinematic environmental mood.",
+    description: "Worlds, shaders, and UI.",
     icon: "palette",
   },
   {
     title: "Story Architects",
-    description: "Political lore, branching events, and universe continuity.",
+    description: "Lore, events, and political arcs.",
     icon: "book",
   },
   {
     title: "World Builders",
-    description: "Biomes, regions, cities, and spatial identity across the map.",
+    description: "Regions, cities, and biomes.",
     icon: "boxes",
   },
 ] as const;

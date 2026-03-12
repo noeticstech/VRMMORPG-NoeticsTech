@@ -6,19 +6,19 @@ import { motion } from "framer-motion";
 const orbitCards = [
   {
     title: "Faction Memory",
-    detail: "NPC networks adapt to conflict, commerce, and diplomacy.",
+    detail: "NPCs remember conflict and trade.",
     icon: Bot,
     className: "left-0 top-[14%]",
   },
   {
     title: "Global Sync",
-    detail: "Shard clusters keep cities, raids, and trade routes coherent.",
+    detail: "Cities and raids stay coherent.",
     icon: Network,
     className: "right-0 top-[26%]",
   },
   {
     title: "Living Orbit",
-    detail: "Persistent simulations continue beyond individual sessions.",
+    detail: "The simulation runs beyond sessions.",
     icon: Orbit,
     className: "left-[18%] bottom-[4%]",
   },
@@ -64,22 +64,26 @@ export function HeroPlanet() {
           <motion.div
             key={card.title}
             animate={{ y: [0, -10, 0] }}
-            className={`section-frame absolute max-w-[220px] rounded-[24px] px-4 py-4 ${card.className}`}
+            className={`neon-card section-frame absolute max-w-[220px] rounded-[24px] px-4 py-4 ${card.className}`}
             transition={{
               duration: 4.5 + index,
               repeat: Number.POSITIVE_INFINITY,
               ease: "easeInOut",
             }}
           >
+            <div className="mb-3 flex items-center justify-between">
+              <span className="card-index">0{index + 1}</span>
+              <div className="h-px w-12 bg-gradient-to-r from-[rgba(78,207,255,0.8)] to-transparent" />
+            </div>
             <div className="flex items-start gap-3">
-              <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-primary">
+              <div className="icon-shell flex size-11 shrink-0 items-center justify-center rounded-2xl text-primary">
                 <Icon className="size-5" />
               </div>
               <div className="space-y-2">
-                <p className="font-display text-sm uppercase tracking-[0.18em] text-white">
+                <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
                   {card.title}
                 </p>
-                <p className="text-xs leading-6 text-muted">{card.detail}</p>
+                <p className="text-xs leading-5 text-muted">{card.detail}</p>
               </div>
             </div>
           </motion.div>

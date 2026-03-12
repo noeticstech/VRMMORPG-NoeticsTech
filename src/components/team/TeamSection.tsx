@@ -38,7 +38,7 @@ export function TeamSection() {
             whileInView={{ opacity: 1, x: 0 }}
           >
             <SectionHeading
-              description="Developers, designers, engineers, artists, story architects, and world builders work as one live-universe team. The product is part MMO infrastructure, part simulation platform, part cinematic worldcraft."
+              description="AAA worldcraft meets platform engineering."
               eyebrow="Team"
               title="The Creators"
             />
@@ -49,7 +49,7 @@ export function TeamSection() {
                 return (
                   <motion.article
                     key={role.title}
-                    className="neon-card section-frame rounded-[24px] px-4 py-5"
+                    className="neon-card section-frame rounded-[26px] px-5 py-5"
                     initial={{ opacity: 0, y: 24 }}
                     transition={{
                       duration: 0.5,
@@ -59,16 +59,17 @@ export function TeamSection() {
                     viewport={{ once: true, amount: 0.3 }}
                     whileInView={{ opacity: 1, y: 0 }}
                   >
-                    <div className="flex items-start gap-3">
-                      <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-[color:rgba(255,141,77,0.2)] bg-[color:rgba(255,141,77,0.08)] text-accent shadow-accent">
+                    <div className="mb-5 flex items-center justify-between">
+                      <span className="card-index">0{index + 1}</span>
+                      <div className="icon-shell flex size-11 shrink-0 items-center justify-center rounded-2xl text-accent">
                         <Icon className="size-5" />
                       </div>
-                      <div>
-                        <p className="font-display text-sm uppercase tracking-[0.18em] text-white">
-                          {role.title}
-                        </p>
-                        <p className="mt-2 text-xs leading-6 text-muted">{role.description}</p>
-                      </div>
+                    </div>
+                    <div>
+                      <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
+                        {role.title}
+                      </p>
+                      <p className="mt-3 text-sm leading-6 text-muted">{role.description}</p>
                     </div>
                   </motion.article>
                 );
@@ -87,13 +88,12 @@ export function TeamSection() {
               imageClassName="object-cover object-center"
               src={siteConfig.images.team}
             >
-              <div className="absolute inset-x-6 bottom-6 rounded-[24px] border border-[color:rgba(255,141,77,0.18)] bg-black/28 p-5 backdrop-blur-xl">
-                <p className="font-display text-sm uppercase tracking-[0.18em] text-accent">
+              <div className="card-surface absolute inset-x-6 bottom-6 rounded-[24px] p-5">
+                <p className="font-display text-sm uppercase tracking-[0.16em] text-accent">
                   Building Worlds Beyond Imagination
                 </p>
-                <p className="mt-3 max-w-lg text-sm leading-7 text-white/80">
-                  The operating model blends AAA production craft with frontier platform
-                  engineering so the world can scale without losing identity.
+                <p className="mt-3 max-w-lg text-sm leading-6 text-white/80">
+                  AAA production craft with frontier platform engineering.
                 </p>
               </div>
             </MediaPanel>

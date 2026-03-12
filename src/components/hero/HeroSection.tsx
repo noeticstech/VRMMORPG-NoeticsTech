@@ -11,6 +11,8 @@ import { Container } from "@/components/ui/container";
 import { DisplayTitle, Eyebrow } from "@/components/ui/typography";
 import { HeroPlanet } from "./HeroPlanet";
 
+const heroChips = ["AI factions", "Player economy", "Persistent world"] as const;
+
 export function HeroSection() {
   const { scrollYProgress } = useScroll();
   const backdropY = useTransform(scrollYProgress, [0, 0.18], [0, 70]);
@@ -39,11 +41,11 @@ export function HeroSection() {
           >
             <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/24 px-4 py-2 backdrop-blur-md">
               <span className="size-2 rounded-full bg-primary shadow-neon" />
-              <Eyebrow className="text-[11px] text-primary">{siteConfig.hero.eyebrow}</Eyebrow>
+              <Eyebrow className="text-primary">{siteConfig.hero.eyebrow}</Eyebrow>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-5">
               <DisplayTitle>{siteConfig.hero.title}</DisplayTitle>
-              <p className="max-w-2xl text-base leading-8 text-muted md:text-lg">
+              <p className="max-w-xl text-base leading-7 text-muted md:text-lg md:leading-8">
                 {siteConfig.hero.subtitle}
               </p>
             </div>
@@ -61,6 +63,16 @@ export function HeroSection() {
                 </Link>
               </Button>
             </div>
+            <div className="flex flex-wrap gap-3">
+              {heroChips.map((chip) => (
+                <span
+                  key={chip}
+                  className="metric-chip rounded-full px-4 py-2 text-[10px] uppercase tracking-[0.26em] text-white/70"
+                >
+                  {chip}
+                </span>
+              ))}
+            </div>
           </motion.div>
           <motion.div
             animate={{ opacity: 1, x: 0 }}
@@ -74,7 +86,7 @@ export function HeroSection() {
           {heroSignals.map((signal, index) => (
             <motion.article
               key={signal.title}
-              className="section-frame rounded-[28px] px-5 py-5"
+              className="neon-card section-frame rounded-[28px] px-5 py-5"
               initial={{ opacity: 0, y: 24 }}
               transition={{
                 duration: 0.55,
@@ -84,16 +96,17 @@ export function HeroSection() {
               viewport={{ once: true, amount: 0.4 }}
               whileInView={{ opacity: 1, y: 0 }}
             >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="font-display text-sm uppercase tracking-[0.18em] text-white">
-                    {signal.title}
-                  </p>
-                  <p className="mt-3 text-xs leading-6 text-muted">{signal.detail}</p>
-                </div>
-                <span className="font-display text-lg uppercase tracking-[0.28em] text-primary">
+              <div className="mb-5 flex items-center justify-between">
+                <span className="card-index">0{index + 1}</span>
+                <span className="font-display text-base uppercase tracking-[0.24em] text-primary">
                   {signal.value}
                 </span>
+              </div>
+              <div className="space-y-3">
+                <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
+                  {signal.title}
+                </p>
+                <p className="max-w-[18rem] text-sm leading-6 text-muted">{signal.detail}</p>
               </div>
             </motion.article>
           ))}

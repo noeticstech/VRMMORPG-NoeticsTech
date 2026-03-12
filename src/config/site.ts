@@ -1,12 +1,12 @@
 export const siteConfig = {
   name: "NoeticsTech",
   description:
-    "A high-end landing page for a VRMMORPG platform building persistent digital societies, AI-driven ecosystems, and large-scale virtual economies.",
+    "A VRMMORPG universe platform for persistent worlds, AI factions, and player economies.",
   hero: {
-    eyebrow: "VRMMORPG Universe Platform",
+    eyebrow: "Persistent VR Universe",
     title: "ENTER THE DIGITAL UNIVERSE",
     subtitle:
-      "Building the future of VR MMORPG worlds. Where players don't just play the game — they live inside it.",
+      "We build VRMMORPG worlds where players live, trade, and shape the simulation.",
     primaryCta: {
       label: "Explore the World",
       href: "#projects",

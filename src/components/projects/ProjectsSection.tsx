@@ -25,13 +25,15 @@ const moduleIcons = {
   shield: Shield,
 } as const;
 
+const mapChips = ["Zone sync", "Live economy", "Realm politics"] as const;
+
 export function ProjectsSection() {
   return (
     <section id="projects" className="relative py-[var(--space-section)]">
       <Container>
         <SectionHeading
           align="center"
-          description="The NoeticsTech world stack is built as interoperable modules, allowing systems to expand into warfare, economy, governance, logistics, and civic life."
+          description="Expandable world modules for conflict, cities, trade, training, and governance."
           eyebrow="Projects"
           title="The Virtual World"
         />
@@ -52,7 +54,20 @@ export function ProjectsSection() {
                 src={siteConfig.images.projects}
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,8,23,0.18)_0%,rgba(3,8,23,0.44)_40%,rgba(3,8,23,0.82)_100%)]" />
-              <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 rounded-full border border-[color:rgba(78,207,255,0.32)] bg-black/40 px-5 py-3 text-xs uppercase tracking-[0.24em] text-primary shadow-neon md:block">
+              <div className="card-surface absolute left-5 top-5 hidden rounded-[22px] px-4 py-4 lg:block">
+                <p className="card-index">World Mesh</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {mapChips.map((chip) => (
+                    <span
+                      key={chip}
+                      className="metric-chip rounded-full px-3 py-2 text-[10px] uppercase tracking-[0.24em] text-white/70"
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="metric-chip absolute bottom-6 left-1/2 hidden -translate-x-1/2 rounded-full px-5 py-3 text-xs uppercase tracking-[0.24em] text-primary shadow-neon md:block">
                 Global Server Core
               </div>
               <div className="absolute inset-0 hidden md:block">
@@ -62,7 +77,7 @@ export function ProjectsSection() {
                   return (
                     <motion.article
                       key={module.title}
-                      className={`section-frame absolute max-w-[240px] rounded-[24px] px-4 py-4 ${module.position}`}
+                      className={`neon-card section-frame absolute max-w-[228px] rounded-[24px] px-4 py-4 ${module.position}`}
                       initial={{ opacity: 0, scale: 0.96 }}
                       transition={{
                         duration: 0.45,
@@ -73,15 +88,19 @@ export function ProjectsSection() {
                       whileHover={{ y: -6 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                     >
+                      <div className="mb-4 flex items-center justify-between">
+                        <span className="card-index">0{index + 1}</span>
+                        <div className="h-px w-12 bg-gradient-to-r from-[rgba(78,207,255,0.8)] to-transparent" />
+                      </div>
                       <div className="flex items-start gap-3">
-                        <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-primary">
+                        <div className="icon-shell flex size-10 shrink-0 items-center justify-center rounded-2xl text-primary">
                           <Icon className="size-5" />
                         </div>
                         <div>
                           <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
                             {module.title}
                           </p>
-                          <p className="mt-2 text-xs leading-6 text-muted">{module.description}</p>
+                          <p className="mt-2 text-xs leading-5 text-muted">{module.description}</p>
                         </div>
                       </div>
                     </motion.article>
@@ -97,7 +116,7 @@ export function ProjectsSection() {
               return (
                 <motion.article
                   key={module.title}
-                  className="section-frame rounded-[24px] px-4 py-4"
+                  className="neon-card section-frame rounded-[24px] px-4 py-4"
                   initial={{ opacity: 0, y: 20 }}
                   transition={{
                     duration: 0.45,
@@ -107,15 +126,19 @@ export function ProjectsSection() {
                   viewport={{ once: true, amount: 0.2 }}
                   whileInView={{ opacity: 1, y: 0 }}
                 >
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="card-index">0{index + 1}</span>
+                    <div className="h-px w-12 bg-gradient-to-r from-[rgba(78,207,255,0.8)] to-transparent" />
+                  </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-primary">
+                    <div className="icon-shell flex size-10 shrink-0 items-center justify-center rounded-2xl text-primary">
                       <Icon className="size-5" />
                     </div>
                     <div>
                       <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
                         {module.title}
                       </p>
-                      <p className="mt-2 text-xs leading-6 text-muted">{module.description}</p>
+                      <p className="mt-2 text-xs leading-5 text-muted">{module.description}</p>
                     </div>
                   </div>
                 </motion.article>
