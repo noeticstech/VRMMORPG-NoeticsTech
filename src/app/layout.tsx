@@ -15,10 +15,7 @@ const bodyFont = Sora({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://noeticstech.example"),
-  title: {
-    default: "NoeticsTech | VRMMORPG Universe Platform",
-    template: "%s | NoeticsTech",
-  },
+  title: "NoeticsTech",
   description:
     "NoeticsTech builds a persistent VRMMORPG universe platform for virtual societies, AI ecosystems, and player-driven economies.",
   keywords: [
@@ -30,14 +27,14 @@ export const metadata: Metadata = {
     "VR platform",
   ],
   openGraph: {
-    title: "NoeticsTech | Enter The Digital Universe",
+    title: "NoeticsTech",
     description:
       "A futuristic landing page for a persistent VRMMORPG platform with AI ecosystems and player-driven worlds.",
     images: ["/images/hero-vr-world.svg"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NoeticsTech | Enter The Digital Universe",
+    title: "NoeticsTech",
     description:
       "Building the future of VR MMORPG worlds where players live inside the game.",
     images: ["/images/hero-vr-world.svg"],
