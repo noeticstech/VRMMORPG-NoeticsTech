@@ -117,6 +117,7 @@ export function MagicRings({
   const hoverAmountRef = useRef(0);
   const isHoveredRef = useRef(false);
   const burstRef = useRef(0);
+  const visibleRef = useRef(true);
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -182,7 +183,7 @@ export function MagicRings({
     const resize = () => {
       const width = mount.clientWidth;
       const height = mount.clientHeight;
-      const dpr = Math.min(window.devicePixelRatio, 2);
+      const dpr = Math.min(window.devicePixelRatio, 1.5);
 
       renderer.setSize(width, height);
       renderer.setPixelRatio(dpr);
@@ -194,6 +195,14 @@ export function MagicRings({
 
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(mount);
+
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        visibleRef.current = entry?.isIntersecting ?? true;
+      },
+      { threshold: 0.05 },
+    );
+    intersectionObserver.observe(mount);
 
     const onMouseMove = (event: MouseEvent) => {
       const rect = mount.getBoundingClientRect();
@@ -224,6 +233,10 @@ export function MagicRings({
 
     const animate = (time: number) => {
       frameId = window.requestAnimationFrame(animate);
+
+      if (!visibleRef.current) {
+        return;
+      }
 
       smoothMouseRef.current[0] +=
         (mouseRef.current[0] - smoothMouseRef.current[0]) * 0.08;
@@ -273,6 +286,7 @@ export function MagicRings({
       window.cancelAnimationFrame(frameId);
       window.removeEventListener("resize", resize);
       resizeObserver.disconnect();
+      intersectionObserver.disconnect();
       mount.removeEventListener("mousemove", onMouseMove);
       mount.removeEventListener("mouseenter", onMouseEnter);
       mount.removeEventListener("mouseleave", onMouseLeave);

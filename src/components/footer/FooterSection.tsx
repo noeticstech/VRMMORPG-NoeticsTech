@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
+import { Card1 } from "@/components/cards";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 
@@ -67,46 +68,62 @@ export function FooterSection() {
               viewport={{ once: true, amount: 0.4 }}
               whileInView={{ opacity: 1, y: 0 }}
             >
-              <div className="neon-card section-frame rounded-[28px] p-5">
-                <p className="font-display text-sm uppercase tracking-[0.22em] text-primary">
-                  Navigation
-                </p>
-                <ul className="mt-5 space-y-3">
-                  {siteConfig.footerNav.map((item) => (
-                    <li key={item.label}>
-                      <Link
-                        className="text-sm uppercase tracking-[0.16em] text-white/80 transition hover:text-white"
-                        href={item.href}
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="neon-card section-frame rounded-[28px] p-5">
-                <p className="font-display text-sm uppercase tracking-[0.22em] text-primary">
-                  Digital Universe
-                </p>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  {siteConfig.socialLinks.map((link) => {
-                    const Icon = socialIcons[link.label as keyof typeof socialIcons];
-
-                    return (
-                      <Link
-                        key={link.label}
-                        aria-label={link.label}
-                        className="icon-shell group flex size-11 items-center justify-center rounded-full text-white/75 transition hover:border-[color:rgba(78,207,255,0.28)] hover:text-primary"
-                        href={link.href}
-                        rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                        target={link.href.startsWith("http") ? "_blank" : undefined}
-                      >
-                        <Icon className="size-4 transition group-hover:scale-110" />
-                      </Link>
-                    );
-                  })}
+              <Card1
+                contentClassName="items-start"
+                header={
+                  <div className="flex w-full items-center px-4">
+                    <p className="font-display text-sm uppercase tracking-[0.22em] text-primary">
+                      Navigation
+                    </p>
+                  </div>
+                }
+              >
+                <div className="flex h-full w-full flex-col justify-start px-4 py-2">
+                  <ul className="space-y-3">
+                    {siteConfig.footerNav.map((item) => (
+                      <li key={item.label}>
+                        <Link
+                          className="text-sm uppercase tracking-[0.16em] text-white/80 transition hover:text-white"
+                          href={item.href}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
+              </Card1>
+              <Card1
+                contentClassName="items-start"
+                header={
+                  <div className="flex w-full items-center px-4">
+                    <p className="font-display text-sm uppercase tracking-[0.22em] text-primary">
+                      Digital Universe
+                    </p>
+                  </div>
+                }
+              >
+                <div className="flex h-full w-full flex-col justify-start px-4 py-2">
+                  <div className="flex flex-wrap gap-3">
+                    {siteConfig.socialLinks.map((link) => {
+                      const Icon = socialIcons[link.label as keyof typeof socialIcons];
+
+                      return (
+                        <Link
+                          key={link.label}
+                          aria-label={link.label}
+                          className="icon-shell group flex size-11 items-center justify-center rounded-full text-white/75 transition hover:border-[color:rgba(78,207,255,0.28)] hover:text-primary"
+                          href={link.href}
+                          rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                          target={link.href.startsWith("http") ? "_blank" : undefined}
+                        >
+                          <Icon className="size-4 transition group-hover:scale-110" />
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </Card1>
             </motion.div>
           </div>
         </div>

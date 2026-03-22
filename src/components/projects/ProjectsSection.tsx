@@ -12,6 +12,7 @@ import {
 import { motion } from "framer-motion";
 import { projectModules } from "@/config/sections";
 import { siteConfig } from "@/config/site";
+import { Card2 } from "@/components/cards";
 import { Container } from "@/components/ui/container";
 import { AdaptiveGrid } from "@/components/ui/grid";
 import { SectionHeading } from "@/components/shared/SectionHeading";
@@ -75,9 +76,9 @@ export function ProjectsSection() {
                   const Icon = moduleIcons[module.icon];
 
                   return (
-                    <motion.article
+                    <motion.div
                       key={module.title}
-                      className={`neon-card section-frame absolute max-w-[228px] rounded-[24px] px-4 py-4 ${module.position}`}
+                      className={`absolute w-full max-w-[228px] ${module.position}`}
                       initial={{ opacity: 0, scale: 0.96 }}
                       transition={{
                         duration: 0.45,
@@ -88,7 +89,50 @@ export function ProjectsSection() {
                       whileHover={{ y: -6 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                     >
-                      <div className="mb-4 flex items-center justify-between">
+                      <Card2 contentClassName="items-start">
+                        <div className="flex h-full w-full flex-col justify-between gap-3 px-4 py-3">
+                          <div className="flex items-center justify-between">
+                            <span className="card-index">0{index + 1}</span>
+                            <div className="h-px w-12 bg-gradient-to-r from-[rgba(78,207,255,0.8)] to-transparent" />
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <div className="icon-shell flex size-10 shrink-0 items-center justify-center rounded-2xl text-primary">
+                              <Icon className="size-5" />
+                            </div>
+                            <div>
+                              <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
+                                {module.title}
+                              </p>
+                              <p className="mt-2 text-xs leading-5 text-muted">{module.description}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </Card2>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+          <AdaptiveGrid className="mt-6 md:hidden">
+            {projectModules.map((module, index) => {
+              const Icon = moduleIcons[module.icon];
+
+              return (
+                <motion.div
+                  key={module.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  transition={{
+                    duration: 0.45,
+                    delay: index * 0.05,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                >
+                  <Card2 contentClassName="items-start">
+                    <div className="flex h-full w-full flex-col justify-between gap-3 px-4 py-3">
+                      <div className="flex items-center justify-between">
                         <span className="card-index">0{index + 1}</span>
                         <div className="h-px w-12 bg-gradient-to-r from-[rgba(78,207,255,0.8)] to-transparent" />
                       </div>
@@ -103,45 +147,9 @@ export function ProjectsSection() {
                           <p className="mt-2 text-xs leading-5 text-muted">{module.description}</p>
                         </div>
                       </div>
-                    </motion.article>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
-          <AdaptiveGrid className="mt-6 md:hidden">
-            {projectModules.map((module, index) => {
-              const Icon = moduleIcons[module.icon];
-
-              return (
-                <motion.article
-                  key={module.title}
-                  className="neon-card section-frame rounded-[24px] px-4 py-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  transition={{
-                    duration: 0.45,
-                    delay: index * 0.05,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                >
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="card-index">0{index + 1}</span>
-                    <div className="h-px w-12 bg-gradient-to-r from-[rgba(78,207,255,0.8)] to-transparent" />
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="icon-shell flex size-10 shrink-0 items-center justify-center rounded-2xl text-primary">
-                      <Icon className="size-5" />
                     </div>
-                    <div>
-                      <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
-                        {module.title}
-                      </p>
-                      <p className="mt-2 text-xs leading-5 text-muted">{module.description}</p>
-                    </div>
-                  </div>
-                </motion.article>
+                  </Card2>
+                </motion.div>
               );
             })}
           </AdaptiveGrid>

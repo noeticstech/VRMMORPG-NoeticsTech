@@ -5,13 +5,7 @@ import { BrainCircuit, Coins, Cpu, Network } from "lucide-react";
 import { motion } from "framer-motion";
 import { services } from "@/config/sections";
 import { siteConfig } from "@/config/site";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card2 } from "@/components/cards";
 import { Container } from "@/components/ui/container";
 import { FeatureGrid } from "@/components/ui/grid";
 import { MagicRings } from "@/components/effects/MagicRings";
@@ -66,7 +60,7 @@ export function ServicesSection() {
           eyebrow="Services"
           title="Game Technology"
         />
-        <FeatureGrid className="mt-12">
+        <FeatureGrid className="mt-12 gap-8 xl:grid-cols-2">
           {services.map((service, index) => {
             const Icon = serviceIcons[service.icon];
 
@@ -83,9 +77,9 @@ export function ServicesSection() {
                 whileHover={{ y: -12 }}
                 whileInView={{ opacity: 1, y: 0 }}
               >
-                <Card className="neon-card group h-full rounded-[32px]">
+                <Card2 contentClassName="top-[12%] h-[72%] items-start">
                   <div className="card-grid absolute inset-0 opacity-30" />
-                  <CardHeader className="relative gap-5">
+                  <div className="flex h-full w-full flex-col justify-between gap-5 px-6 py-5">
                     <div className="flex items-center justify-between gap-4">
                       <span className="card-index">0{index + 1}</span>
                       <span className="metric-chip rounded-full px-3 py-2 text-[10px] uppercase tracking-[0.24em] text-white/70">
@@ -93,7 +87,7 @@ export function ServicesSection() {
                       </span>
                     </div>
                     <div className="flex items-start gap-4">
-                      <div className="icon-shell flex size-14 items-center justify-center rounded-[22px] text-primary">
+                      <div className="icon-shell flex size-14 shrink-0 items-center justify-center rounded-[20px] text-primary">
                         <motion.div
                           animate={{ rotate: [0, 6, -6, 0], scale: [1, 1.04, 1] }}
                           transition={{
@@ -106,19 +100,17 @@ export function ServicesSection() {
                         </motion.div>
                       </div>
                       <div className="space-y-4">
-                        <CardTitle className="max-w-[14ch] leading-snug">
+                        <p className="max-w-[16ch] font-display text-base uppercase leading-snug tracking-[0.14em] text-white md:text-lg">
                           {service.title}
-                        </CardTitle>
+                        </p>
                         <div className="h-px w-16 bg-gradient-to-r from-[rgba(78,207,255,0.8)] to-transparent" />
+                        <p className="max-w-md text-base leading-7 text-muted">
+                          {service.description}
+                        </p>
                       </div>
                     </div>
-                  </CardHeader>
-                  <CardContent className="relative pt-0">
-                    <CardDescription className="max-w-xs">
-                      {service.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
+                  </div>
+                </Card2>
               </motion.div>
             );
           })}

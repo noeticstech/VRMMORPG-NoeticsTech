@@ -16,8 +16,12 @@ export function Navbar() {
       <Container className="pt-4">
         <div className="section-frame rounded-full border-white/10 px-4 py-3 backdrop-blur-xl">
           <div className="flex items-center justify-between gap-4">
-            <Link className="font-display text-lg uppercase tracking-[0.28em]" href="#hero">
-              {siteConfig.name}
+            <Link
+              className="font-display text-[1.15rem] leading-none tracking-[0.02em] md:text-[1.3rem]"
+              href="#hero"
+            >
+              <span className="text-primary">𝑵𝒐𝒆𝒕𝒊𝒄𝒔</span>
+              <span className="text-secondary">𝑻𝒆𝒄𝒉</span>
             </Link>
             <nav className="hidden items-center gap-2 lg:flex">
               {siteConfig.nav.map((item) => (

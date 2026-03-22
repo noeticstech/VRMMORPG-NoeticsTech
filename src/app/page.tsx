@@ -12,11 +12,11 @@ export default function Home() {
     <PageLayout>
       <HeroSection />
       <SectionSpacer />
+      <ProjectsSection />
+      <SectionSpacer />
       <AboutSection />
       <SectionSpacer />
       <ServicesSection />
-      <SectionSpacer />
-      <ProjectsSection />
       <SectionSpacer />
       <TeamSection />
       <SectionSpacer />

@@ -4,6 +4,7 @@ import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { aboutCapabilities, aboutStats } from "@/config/sections";
 import { SimulationStackCard } from "@/components/about/SimulationStackCard";
+import { Card1, Card2 } from "@/components/cards";
 import { AnimatedCounter } from "@/components/shared/AnimatedCounter";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Container } from "@/components/ui/container";
@@ -46,25 +47,23 @@ export function AboutSection() {
             />
             <div className="grid gap-4 sm:grid-cols-2">
               {aboutCapabilities.map((item, index) => (
-                <div
-                  key={item}
-                  className="neon-card section-frame rounded-[22px] px-4 py-4"
-                >
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="card-index">0{index + 1}</span>
-                    <CheckCircle2 className="size-4 text-primary" />
+                <Card2 key={item} contentClassName="items-start">
+                  <div className="flex h-full w-full flex-col justify-between gap-4 px-4 py-3">
+                    <div className="flex items-center justify-between">
+                      <span className="card-index">0{index + 1}</span>
+                      <CheckCircle2 className="size-4 text-primary" />
+                    </div>
+                    <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
+                      {item}
+                    </p>
                   </div>
-                  <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
-                    {item}
-                  </p>
-                </div>
+                </Card2>
               ))}
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {aboutStats.map((stat, index) => (
-                <motion.article
+                <motion.div
                   key={stat.label}
-                  className="neon-card section-frame rounded-[26px] px-5 py-5"
                   initial={{ opacity: 0, y: 24 }}
                   transition={{
                     duration: 0.5,
@@ -74,18 +73,26 @@ export function AboutSection() {
                   viewport={{ once: true, amount: 0.3 }}
                   whileInView={{ opacity: 1, y: 0 }}
                 >
-                  <div className="mb-5 flex items-center justify-between">
-                    <span className="card-index">Metric 0{index + 1}</span>
-                    <div className="h-px w-14 bg-gradient-to-r from-[rgba(78,207,255,0.8)] to-transparent" />
-                  </div>
-                  <p className="font-display text-4xl uppercase tracking-[0.18em] text-primary">
-                    <AnimatedCounter suffix={stat.suffix} value={stat.value} />
-                  </p>
-                  <p className="mt-4 font-display text-sm uppercase tracking-[0.16em] text-white">
-                    {stat.label}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-muted">{stat.description}</p>
-                </motion.article>
+                  <Card1
+                    contentClassName="items-start"
+                    header={
+                      <div className="flex w-full items-center justify-between gap-4 px-4 text-white">
+                        <span className="card-index">Metric 0{index + 1}</span>
+                        <div className="h-px w-14 bg-gradient-to-r from-[rgba(78,207,255,0.8)] to-transparent" />
+                      </div>
+                    }
+                  >
+                    <div className="flex h-full flex-col justify-start gap-3 px-4 py-2">
+                      <p className="font-display text-4xl uppercase tracking-[0.18em] text-primary">
+                        <AnimatedCounter suffix={stat.suffix} value={stat.value} />
+                      </p>
+                      <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
+                        {stat.label}
+                      </p>
+                      <p className="text-sm leading-6 text-muted">{stat.description}</p>
+                    </div>
+                  </Card1>
+                </motion.div>
               ))}
             </div>
           </motion.div>

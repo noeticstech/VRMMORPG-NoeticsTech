@@ -1,37 +1,22 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { heroSignals } from "@/config/sections";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { TextType } from "@/components/ui/TextType";
 import { Eyebrow } from "@/components/ui/typography";
+import { Card1 } from "@/components/cards";
 import { HeroPlanet } from "./HeroPlanet";
 
 const heroChips = ["AI factions", "Player economy", "Persistent world"] as const;
 
 export function HeroSection() {
-  const { scrollYProgress } = useScroll();
-  const backdropY = useTransform(scrollYProgress, [0, 0.18], [0, 70]);
-  const backdropOpacity = useTransform(scrollYProgress, [0, 0.18], [0.65, 0.28]);
-
   return (
     <section id="hero" className="relative overflow-hidden pb-20 pt-32 md:pb-24 lg:pt-36">
-      <motion.div aria-hidden="true" className="absolute inset-0" style={{ y: backdropY, opacity: backdropOpacity }}>
-        <Image
-          fill
-          alt=""
-          className="object-cover object-center mix-blend-screen"
-          priority
-          sizes="100vw"
-          src={siteConfig.images.hero}
-        />
-        <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
-      </motion.div>
       <Container className="relative z-10">
         <div className="grid items-center gap-16 lg:grid-cols-[1.02fr_0.98fr]">
           <motion.div
@@ -97,9 +82,8 @@ export function HeroSection() {
         </div>
         <div className="mt-12 grid gap-4 md:grid-cols-3">
           {heroSignals.map((signal, index) => (
-            <motion.article
+            <motion.div
               key={signal.title}
-              className="neon-card section-frame rounded-[28px] px-5 py-5"
               initial={{ opacity: 0, y: 24 }}
               transition={{
                 duration: 0.55,
@@ -109,19 +93,25 @@ export function HeroSection() {
               viewport={{ once: true, amount: 0.4 }}
               whileInView={{ opacity: 1, y: 0 }}
             >
-              <div className="mb-5 flex items-center justify-between">
-                <span className="card-index">0{index + 1}</span>
-                <span className="font-display text-base uppercase tracking-[0.24em] text-primary">
-                  {signal.value}
-                </span>
-              </div>
-              <div className="space-y-3">
-                <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
-                  {signal.title}
-                </p>
-                <p className="max-w-[18rem] text-sm leading-6 text-muted">{signal.detail}</p>
-              </div>
-            </motion.article>
+              <Card1
+                contentClassName="items-start"
+                header={
+                  <div className="flex w-full items-center justify-between gap-4 px-4 text-white">
+                    <span className="card-index">0{index + 1}</span>
+                    <span className="font-display text-sm uppercase tracking-[0.22em] text-primary">
+                      {signal.value}
+                    </span>
+                  </div>
+                }
+              >
+                <div className="flex h-full flex-col justify-start gap-3 px-4 pt-2">
+                  <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
+                    {signal.title}
+                  </p>
+                  <p className="max-w-[18rem] text-sm leading-6 text-muted">{signal.detail}</p>
+                </div>
+              </Card1>
+            </motion.div>
           ))}
         </div>
       </Container>

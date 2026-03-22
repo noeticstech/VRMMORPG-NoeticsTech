@@ -1,104 +1,46 @@
 "use client";
 
-import {
-  BookOpen,
-  Boxes,
-  Code2,
-  Cog,
-  Palette,
-  PenTool,
-} from "lucide-react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { teamRoles } from "@/config/sections";
 import { Container } from "@/components/ui/container";
-import { AdaptiveGrid } from "@/components/ui/grid";
-import { MediaPanel } from "@/components/shared/MediaPanel";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-
-const roleIcons = {
-  code: Code2,
-  pen: PenTool,
-  cog: Cog,
-  palette: Palette,
-  book: BookOpen,
-  boxes: Boxes,
-} as const;
+import { TeamRoleRail } from "./TeamRoleRail";
 
 export function TeamSection() {
   return (
     <section id="team" className="relative py-[var(--space-section)]">
       <Container>
-        <div className="grid items-start gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: -24 }}
-            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true, amount: 0.3 }}
-            whileInView={{ opacity: 1, x: 0 }}
-          >
-            <SectionHeading
-              description="AAA worldcraft meets platform engineering."
-              eyebrow="Team"
-              title="The Creators"
-            />
-            <AdaptiveGrid>
-              {teamRoles.map((role, index) => {
-                const Icon = roleIcons[role.icon];
-
-                return (
-                  <motion.article
-                    key={role.title}
-                    className="neon-card section-frame rounded-[26px] px-5 py-5"
-                    initial={{ opacity: 0, y: 24 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: index * 0.06,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                  >
-                    <div className="mb-5 flex items-center justify-between">
-                      <span className="card-index">0{index + 1}</span>
-                      <div className="icon-shell flex size-11 shrink-0 items-center justify-center rounded-2xl text-accent">
-                        <Icon className="size-5" />
-                      </div>
-                    </div>
-                    <div>
-                      <p className="font-display text-sm uppercase tracking-[0.16em] text-white">
-                        {role.title}
-                      </p>
-                      <p className="mt-3 text-sm leading-6 text-muted">{role.description}</p>
-                    </div>
-                  </motion.article>
-                );
-              })}
-            </AdaptiveGrid>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true, amount: 0.3 }}
-            whileInView={{ opacity: 1, x: 0 }}
-          >
-            <MediaPanel
-              alt="The NoeticsTech team collaborating around a holographic world."
-              className="h-full"
-              imageClassName="object-cover object-center"
-              src={siteConfig.images.team}
-            >
-              <div className="card-surface absolute inset-x-6 bottom-6 rounded-[24px] p-5">
-                <p className="font-display text-sm uppercase tracking-[0.16em] text-accent">
-                  Building Worlds Beyond Imagination
-                </p>
-                <p className="mt-3 max-w-lg text-sm leading-6 text-white/80">
-                  AAA production craft with frontier platform engineering.
-                </p>
-              </div>
-            </MediaPanel>
-          </motion.div>
-        </div>
+        <motion.div
+          className="space-y-10"
+          initial={{ opacity: 0, y: 24 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, amount: 0.25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+        >
+          <SectionHeading
+            align="center"
+            description="Building worlds beyond imagination."
+            eyebrow="Team"
+            title="The Creators"
+          />
+          <div className="relative mx-auto mt-2 min-h-[14rem] w-full max-w-[68rem] md:min-h-[18rem] lg:min-h-[22rem] xl:min-h-[26rem]">
+            <div className="pointer-events-none absolute inset-x-[1%] top-0 h-[72%] overflow-hidden">
+              <Image
+                fill
+                priority={false}
+                alt="The NoeticsTech team collaborating around a holographic world."
+                className="object-cover object-[center_20%] opacity-68 [mask-image:linear-gradient(180deg,rgba(0,0,0,0.96)_0%,rgba(0,0,0,0.92)_54%,rgba(0,0,0,0.42)_78%,transparent_100%)]"
+                sizes="(min-width: 1280px) 68rem, (min-width: 768px) 90vw, 100vw"
+                src={siteConfig.images.team}
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.18)_0%,rgba(2,6,23,0.38)_42%,rgba(2,6,23,0.86)_100%)]" />
+            </div>
+            <div className="pointer-events-none absolute inset-x-[12%] top-[18%] h-[36%] bg-[radial-gradient(circle_at_center,rgba(83,195,255,0.2)_0%,rgba(120,91,255,0.14)_32%,transparent_72%)] blur-3xl" />
+            <TeamRoleRail roles={teamRoles} />
+          </div>
+        </motion.div>
       </Container>
     </section>
   );

@@ -32,11 +32,10 @@ export function SectionHeading({
         as="h2"
         className="font-display text-3xl uppercase tracking-[0.14em] text-white sm:text-4xl lg:text-[3.2rem]"
         cursorBlinkDuration={0.65}
-        cursorCharacter="_"
-        cursorClassName="text-primary/80"
         initialDelay={80}
         loop={false}
         retriggerOnVisible
+        showCursor={false}
         startOnVisible
         text={title}
         typingSpeed={96}

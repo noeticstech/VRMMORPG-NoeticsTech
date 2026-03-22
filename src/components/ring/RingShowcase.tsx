@@ -39,7 +39,9 @@ export function RingShowcase({
     pointer: { x: 0, y: 0 },
     drag: { x: 0, y: 0 },
   });
+  const containerRef = useRef<HTMLDivElement>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -54,6 +56,28 @@ export function RingShowcase({
 
     return () => {
       mediaQuery.removeEventListener("change", updateMotion);
+    };
+  }, []);
+
+  useEffect(() => {
+    const node = containerRef.current;
+    if (!node) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        startTransition(() => {
+          setIsVisible(entry?.isIntersecting ?? true);
+        });
+      },
+      { rootMargin: "20% 0px 20% 0px", threshold: 0.05 },
+    );
+
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
     };
   }, []);
 
@@ -108,7 +132,7 @@ export function RingShowcase({
   };
 
   return (
-    <div className={cn("relative mx-auto w-full max-w-[680px]", className)}>
+    <div ref={containerRef} className={cn("relative mx-auto w-full max-w-[680px]", className)}>
       <div
         className={cn(
           "relative aspect-square w-full cursor-grab overflow-visible bg-transparent active:cursor-grabbing",
@@ -138,11 +162,13 @@ export function RingShowcase({
         }}
         style={{ touchAction: "none" }}
       >
-        <RingCanvas
-          interactionRef={interactionRef}
-          reducedMotion={reducedMotion}
-          ringScale={ringScale}
-        />
+        {isVisible ? (
+          <RingCanvas
+            interactionRef={interactionRef}
+            reducedMotion={reducedMotion}
+            ringScale={ringScale}
+          />
+        ) : null}
       </div>
     </div>
   );
