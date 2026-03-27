@@ -116,35 +116,71 @@ export const projectModules = [
   },
 ] as const;
 
-export const teamRoles = [
+export type TeamProfileIcon = "code" | "pen" | "cog" | "palette" | "book" | "boxes";
+
+export type TeamProfile = {
+  name: string;
+  label: string;
+  bio: string;
+  icon: TeamProfileIcon;
+  accentColor: string;
+  photo: string;
+  profileUrl: string;
+};
+
+export const teamProfiles = [
   {
-    title: "Developers",
-    description: "Core systems and live ops.",
+    name: "Kael Voss",
+    label: "Developers",
+    bio: "Builds core systems and live ops.",
     icon: "code",
+    accentColor: "#4fcfff",
+    photo: "/images/team/kael-voss.jpg",
+    profileUrl: "https://example.com/team/kael-voss",
   },
   {
-    title: "Designers",
-    description: "Loops, balance, and progression.",
+    name: "Mira Sol",
+    label: "Designers",
+    bio: "Shapes loops, balance, and progression.",
     icon: "pen",
+    accentColor: "#ff71d9",
+    photo: "/images/team/mira-sol.jpg",
+    profileUrl: "https://example.com/team/mira-sol",
   },
   {
-    title: "Engineers",
-    description: "Rendering, network, and cloud.",
+    name: "Orion Crest",
+    label: "Engineers",
+    bio: "Owns rendering, network, and cloud.",
     icon: "cog",
+    accentColor: "#6f90ff",
+    photo: "/images/team/orion-crest.jpg",
+    profileUrl: "https://example.com/team/orion-crest",
   },
   {
-    title: "Artists",
-    description: "Worlds, shaders, and UI.",
+    name: "Lyra Vale",
+    label: "Artists",
+    bio: "Crafts worlds, shaders, and UI.",
     icon: "palette",
+    accentColor: "#ff8d4d",
+    photo: "/images/team/lyra-vale.jpg",
+    profileUrl: "https://example.com/team/lyra-vale",
   },
   {
-    title: "Story Architects",
-    description: "Lore, events, and political arcs.",
+    name: "Soren Quill",
+    label: "Storytellers",
+    bio: "Writes lore, events, and political arcs.",
     icon: "book",
+    accentColor: "#b169ff",
+    photo: "/images/team/soren-quill.jpg",
+    profileUrl: "https://example.com/team/soren-quill",
   },
   {
-    title: "World Builders",
-    description: "Regions, cities, and biomes.",
+    name: "Nova Rune",
+    label: "Dreamers",
+    bio: "Imagines regions, cities, and biomes.",
     icon: "boxes",
+    accentColor: "#d96dff",
+    photo: "/images/team/nova-rune.jpg",
+    profileUrl: "https://example.com/team/nova-rune",
   },
-] as const;
+] satisfies readonly TeamProfile[];
